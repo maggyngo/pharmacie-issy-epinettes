@@ -5,6 +5,51 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Orthopédie et bas de contention à Issy-les-Moulineaux — Pharmacie Issy Epinettes</title>
 <meta name="description" content="Conseil et essayage orthopédie, bas de contention et compression sur la gamme Orliman à la Pharmacie Issy Epinettes, Issy-les-Moulineaux.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MedicalProcedure",
+  "name": "Orthopédie et bas de contention",
+  "description": "Conseil et essayage sur la gamme Orliman : contention, maintien et confort, avec prise de mesure en officine.",
+  "procedureType": "https://schema.org/NoninvasiveProcedure",
+  "howPerformed": "Prise de mesure et essayage du matériel orthopédique adapté, conseil personnalisé.",
+  "url": "https://pharmacie-issy-epinettes.fr/orthopedie.html",
+  "provider": {
+    "@type": "Pharmacy",
+    "name": "Pharmacie Issy Epinettes",
+    "url": "https://pharmacie-issy-epinettes.fr",
+    "telephone": "+33146387519",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "54 rue Erevan",
+      "addressLocality": "Issy-les-Moulineaux",
+      "postalCode": "92130",
+      "addressCountry": "FR"
+    }
+  },
+  "mainEntityOfPage": "https://pharmacie-issy-epinettes.fr/orthopedie.html"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Accueil",
+      "item": "https://pharmacie-issy-epinettes.fr/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Orthopédie et bas de contention",
+      "item": "https://pharmacie-issy-epinettes.fr/orthopedie.html"
+    }
+  ]
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -619,8 +664,12 @@
   <div class="hero-ctas" style="margin-bottom:56px;">
     <a class="btn btn-primary" href="https://www.doctolib.fr/pharmacie/issy-les-moulineaux/pharmacie-issy-des-epinettes/booking/motive-categories?specialityId=3097&telehealth=false&placeId=practice-207078&source=profile" target="_blank" rel="noopener" style="background:#1275AF;">Prendre RDV sur Doctolib</a>
       <div style="display:flex; flex-direction:column; gap:4px; align-items:flex-start;">
-        <a class="btn btn-yellow" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=pharmacie.epinettes@gmail.com&amp;su=Envoi%20d%27ordonnance&amp;body=Bonjour%2C%0A%0AVeuillez%20trouver%20ci-joint%20mon%20ordonnance.%0A%0ANom%20%3A%0AT%C3%A9l%C3%A9phone%20%3A%0A%0AMerci%2C%0Acordialement." target="_blank" rel="noopener">Nous envoyer une ordonnance</a>
+        <a class="btn btn-yellow" href="mailto:pharmacie.epinettes@gmail.com?subject=Envoi%20d%27ordonnance&amp;body=Bonjour%2C%0A%0AVeuillez%20trouver%20ci-joint%20mon%20ordonnance.%0A%0ANom%20%3A%0AT%C3%A9l%C3%A9phone%20%3A%0A%0AMerci%2C%0Acordialement." target="_blank" rel="noopener">Nous envoyer une ordonnance</a>
         <span style="font-size:12px; font-weight:700; color:#D6273C;">Merci de nous appeler en cas d'envoi d'ordonnance.</span>
+        <span style="font-size:12px; color:#5c6358;">
+          Le bouton ne s'ouvre pas ? <span style="font-family:'IBM Plex Mono', monospace;">pharmacie.epinettes@gmail.com</span>
+          <button type="button" class="copy-email-btn" onclick="copyPharmacyEmail(this)" style="border:none; background:none; color:#1275AF; font-weight:700; font-size:12px; cursor:pointer; padding:0; text-decoration:underline;">Copier</button>
+        </span>
       </div>
   </div>
 
@@ -703,5 +752,31 @@
   <p class="fine" style="margin-top:8px;">SIRET 483 404 380 00014 — RPPS 10 001 152 86 — Pharmacien titulaire : Maggy Ngo</p>
 </footer>
 
+<script>
+function copyPharmacyEmail(btn){
+  const email = "pharmacie.epinettes@gmail.com";
+  const done = () => {
+    const original = btn.textContent;
+    btn.textContent = "Copié !";
+    setTimeout(() => { btn.textContent = original; }, 2000);
+  };
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(email).then(done).catch(() => fallbackCopy(email, done));
+  } else {
+    fallbackCopy(email, done);
+  }
+}
+function fallbackCopy(text, done){
+  const ta = document.createElement("textarea");
+  ta.value = text;
+  ta.style.position = "fixed";
+  ta.style.opacity = "0";
+  document.body.appendChild(ta);
+  ta.focus();
+  ta.select();
+  try { document.execCommand("copy"); done(); } catch(e) {}
+  document.body.removeChild(ta);
+}
+</script>
 </body>
 </html>
