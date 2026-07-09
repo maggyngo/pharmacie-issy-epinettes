@@ -149,6 +149,15 @@
     background:var(--sun); color:var(--pine-2);
   }
   .btn-yellow:hover{transform:translateY(-1px); box-shadow:0 6px 16px rgba(244,190,79,0.5);}
+  .btn-copy-email{
+    font-family:'Inter', sans-serif; font-weight:600; font-size:12.5px;
+    display:inline-flex; align-items:center; gap:6px;
+    padding:7px 14px; border-radius:100px;
+    background:transparent; border:1px solid var(--line); color:var(--sage);
+    cursor:pointer; transition:background .15s, border-color .15s;
+  }
+  .btn-copy-email:hover{background:rgba(124,155,121,0.12); border-color:var(--sage);}
+  .btn-copy-email svg{width:13px; height:13px; flex-shrink:0;}
   .btn-map{
     font-family:'Inter', sans-serif;
     font-weight:700; font-size:15px;
@@ -675,7 +684,13 @@
       <div style="display:flex; flex-direction:column; gap:4px; align-items:flex-start;">
         <a class="btn btn-yellow" href="mailto:pharmacie.epinettes@gmail.com?subject=Envoi%20d%27ordonnance&body=Bonjour%2C%0A%0AVeuillez%20trouver%20ci-joint%20mon%20ordonnance.%0A%0ANom%20%3A%0AT%C3%A9l%C3%A9phone%20%3A%0A%0AMerci%2C%0Acordialement.">Nous envoyer une ordonnance</a>
         <span style="font-size:12px; font-weight:700; color:#D6273C;">Merci de nous appeler en cas d'envoi d'ordonnance.</span>
-        <span style="font-size:12px; color:var(--sage);">Si le bouton ne fonctionne pas, utilisez directement <a href="mailto:pharmacie.epinettes@gmail.com" style="color:inherit; text-decoration:underline;">pharmacie.epinettes@gmail.com</a></span>
+        <span style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+          <span style="font-size:12px; color:var(--sage);">Si le bouton ne fonctionne pas :</span>
+          <button type="button" class="btn-copy-email" onclick="copierAdresseEmail(event, this)">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="9" y="9" width="12" height="12" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M5 15V5a2 2 0 0 1 2-2h10" stroke="currentColor" stroke-width="1.8"/></svg>
+            Copier l'adresse email
+          </button>
+        </span>
       </div>
       <a class="btn btn-outline" href="#services">Découvrir nos services</a>
       <a class="hero-phone" href="tel:+33146387519">
@@ -931,7 +946,13 @@
         <a class="btn btn-primary" href="https://www.doctolib.fr/pharmacie/issy-les-moulineaux/pharmacie-issy-des-epinettes" target="_blank" rel="noopener" style="background:#1275AF;">Prendre RDV sur Doctolib</a>
         <a class="btn btn-yellow" href="mailto:pharmacie.epinettes@gmail.com?subject=Envoi%20d%27ordonnance&body=Bonjour%2C%0A%0AVeuillez%20trouver%20ci-joint%20mon%20ordonnance.%0A%0ANom%20%3A%0AT%C3%A9l%C3%A9phone%20%3A%0A%0AMerci%2C%0Acordialement." style="margin-top:10px; display:inline-block;">Nous envoyer une ordonnance</a>
         <p style="font-size:12.5px; font-weight:700; color:#D6273C; margin-top:8px;">Merci de nous appeler en cas d'envoi d'ordonnance.</p>
-        <p style="font-size:12.5px; color:var(--sage); margin-top:4px;">Si le bouton ne fonctionne pas, utilisez directement <a href="mailto:pharmacie.epinettes@gmail.com" style="color:inherit; text-decoration:underline;">pharmacie.epinettes@gmail.com</a></p>
+        <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-top:4px;">
+          <span style="font-size:12.5px; color:var(--sage);">Si le bouton ne fonctionne pas :</span>
+          <button type="button" class="btn-copy-email" onclick="copierAdresseEmail(event, this)">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="9" y="9" width="12" height="12" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M5 15V5a2 2 0 0 1 2-2h10" stroke="currentColor" stroke-width="1.8"/></svg>
+            Copier l'adresse email
+          </button>
+        </div>
       </div>
     </div>
     <div style="margin-top:24px; border-radius:20px; overflow:hidden; border:1px solid var(--line); aspect-ratio:21/8;">
@@ -1085,6 +1106,27 @@
       target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   });
+
+  function copierAdresseEmail(event, el){
+    event.preventDefault();
+    var adresse = 'pharmacie.epinettes@gmail.com';
+    var original = el.getAttribute('data-original');
+    if (!original) {
+      original = el.innerHTML;
+      el.setAttribute('data-original', original);
+    }
+    function afficherConfirmation(){
+      el.textContent = 'Adresse copiée ✓';
+      setTimeout(function(){ el.innerHTML = original; }, 2000);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(adresse).then(afficherConfirmation).catch(function(){
+        window.location.href = 'mailto:' + adresse;
+      });
+    } else {
+      window.location.href = 'mailto:' + adresse;
+    }
+  }
 </script>
 </body>
 </html>
