@@ -650,13 +650,6 @@
   ]
 }
 </script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-8RQBCM9ZHN"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-8RQBCM9ZHN');
-</script>
 </head>
 <body>
 
@@ -869,6 +862,53 @@
     <p style="font-size:12px; color:#8a9184; margin-top:10px;">Pour toute question de santé ou de traitement, contactez directement notre équipe au 01 46 38 75 19 — nos réponses ici restent d'ordre pratique.</p>
   </div>
 </div>
+
+
+<!-- Bandeau de consentement cookies + Google Analytics -->
+<div id="cookie-banner" style="display:none; position:fixed; bottom:0; left:0; right:0; z-index:10000; background:var(--pine-2); color:var(--ivory); padding:18px 24px; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:16px; box-shadow:0 -8px 24px rgba(0,0,0,0.25); font-family:'Inter', sans-serif;">
+  <p style="margin:0; font-size:13.5px; max-width:640px; line-height:1.5;">Ce site utilise Google Analytics pour mesurer la fréquentation et améliorer votre expérience. Vous pouvez accepter ou refuser.</p>
+  <div style="display:flex; gap:10px; flex-shrink:0;">
+    <button id="cookie-refuse" style="background:transparent; border:1px solid var(--ivory); color:var(--ivory); padding:10px 18px; border-radius:100px; font-size:13.5px; cursor:pointer; font-family:'Inter', sans-serif;">Refuser</button>
+    <button id="cookie-accept" style="background:var(--brick); border:none; color:#fff; padding:10px 18px; border-radius:100px; font-size:13.5px; cursor:pointer; font-weight:600; font-family:'Inter', sans-serif;">Accepter</button>
+  </div>
+</div>
+<script>
+  (function(){
+    var GA_ID = 'G-GQWP9KN1Z8';
+
+    function loadGA(){
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+      document.head.appendChild(s);
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){ dataLayer.push(arguments); }
+      window.gtag = gtag;
+      gtag('js', new Date());
+      gtag('config', GA_ID);
+    }
+
+    var consent = localStorage.getItem('ga-consent');
+    var banner = document.getElementById('cookie-banner');
+
+    if (consent === 'accepted') {
+      loadGA();
+    } else if (consent === null) {
+      banner.style.display = 'flex';
+    }
+
+    document.getElementById('cookie-accept').addEventListener('click', function(){
+      localStorage.setItem('ga-consent', 'accepted');
+      banner.style.display = 'none';
+      loadGA();
+    });
+
+    document.getElementById('cookie-refuse').addEventListener('click', function(){
+      localStorage.setItem('ga-consent', 'refused');
+      banner.style.display = 'none';
+    });
+  })();
+</script>
 
 </body>
 </html>
