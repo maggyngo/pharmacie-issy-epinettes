@@ -1,0 +1,15 @@
+{
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.pharmacie-issy-epinettes.fr"
+        }
+      ],
+      "destination": "https://pharmacie-issy-epinettes.fr/:path*",
+      "permanent": true
+    }
+  ]
+}
