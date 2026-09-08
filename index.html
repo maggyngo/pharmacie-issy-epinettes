@@ -342,7 +342,7 @@
   /* ===== BADGE FLOTTANT "RENTRÉE" (écriture animée) ===== */
   .rentree-float{
     position:absolute;
-    top:-26px; right:-22px; left:auto;
+    top:-64px; right:-18px; left:auto;
     z-index:6;
     display:flex;
     flex-direction:column;
@@ -360,8 +360,8 @@
     white-space:nowrap;
     display:inline-block;
     clip-path:inset(0 100% 0 0);
-    animation:rf-write 1.4s steps(24,end) forwards;
-    animation-delay:.6s;
+    animation:rf-write 4.5s ease-in-out infinite;
+    animation-delay:.4s;
   }
   .rentree-float .rf-underline{
     display:block;
@@ -372,17 +372,25 @@
   .rentree-float .rf-path{
     stroke-dasharray:320;
     stroke-dashoffset:320;
-    animation:rf-draw 1s ease forwards;
-    animation-delay:2.1s;
+    opacity:0;
+    animation:rf-draw 4.5s ease-in-out infinite;
+    animation-delay:.9s;
   }
   @keyframes rf-write{
-    to{ clip-path:inset(0 0% 0 0); }
+    0%{ clip-path:inset(0 100% 0 0); }
+    30%{ clip-path:inset(0 0% 0 0); }
+    75%{ clip-path:inset(0 0% 0 0); }
+    100%{ clip-path:inset(0 100% 0 0); }
   }
   @keyframes rf-draw{
-    to{ stroke-dashoffset:0; }
+    0%{ stroke-dashoffset:320; opacity:0; }
+    35%{ opacity:1; }
+    45%{ stroke-dashoffset:0; opacity:1; }
+    80%{ stroke-dashoffset:0; opacity:1; }
+    100%{ stroke-dashoffset:320; opacity:0; }
   }
   @media (max-width:880px){
-    .rentree-float{ top:-18px; right:-10px; }
+    .rentree-float{ top:-42px; right:-8px; }
     .rentree-float .rf-text{ font-size:clamp(38px, 9vw, 52px); }
   }
 
