@@ -339,6 +339,53 @@
   .hero-meta div{display:flex; flex-direction:column; gap:4px;}
   .hero-meta span.label{color:#7a8177; letter-spacing:.06em; text-transform:uppercase; font-size:12.5px; font-weight:500;}
 
+  /* ===== BADGE FLOTTANT "RENTRÉE" (écriture animée) ===== */
+  .rentree-float{
+    position:absolute;
+    top:-26px; right:-22px; left:auto;
+    z-index:6;
+    display:flex;
+    flex-direction:column;
+    align-items:flex-end;
+    gap:0;
+    transform:rotate(-4deg);
+    pointer-events:none;
+  }
+  .rentree-float .rf-text{
+    font-family:'Patrick Hand', cursive;
+    font-weight:400;
+    font-size:clamp(48px, 6.8vw, 72px);
+    line-height:1;
+    color:#D6273C;
+    white-space:nowrap;
+    display:inline-block;
+    clip-path:inset(0 100% 0 0);
+    animation:rf-write 1.4s steps(24,end) forwards;
+    animation-delay:.6s;
+  }
+  .rentree-float .rf-underline{
+    display:block;
+    margin-top:-6px;
+    margin-left:6px;
+    overflow:visible;
+  }
+  .rentree-float .rf-path{
+    stroke-dasharray:320;
+    stroke-dashoffset:320;
+    animation:rf-draw 1s ease forwards;
+    animation-delay:2.1s;
+  }
+  @keyframes rf-write{
+    to{ clip-path:inset(0 0% 0 0); }
+  }
+  @keyframes rf-draw{
+    to{ stroke-dashoffset:0; }
+  }
+  @media (max-width:880px){
+    .rentree-float{ top:-18px; right:-10px; }
+    .rentree-float .rf-text{ font-size:clamp(38px, 9vw, 52px); }
+  }
+
   /* signature card - "carnet" */
   .rx-card{
     background:var(--card);
@@ -821,7 +868,13 @@
   -->
 
   <div style="transform:scale(0.82); transform-origin:top right;">
-  <div>
+  <div style="position:relative;">
+    <div class="rentree-float">
+      <span class="rf-text">C'est la rentrée !</span>
+      <svg class="rf-underline" viewBox="0 0 320 34" width="290" height="30" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path class="rf-path" d="M8 20 C 70 34, 150 4, 210 18 S 290 30, 310 12" fill="none" stroke="#D6273C" stroke-width="5" stroke-linecap="round"/>
+      </svg>
+    </div>
     <div style="font-family:'Fraunces', serif; font-weight:600; color:#D6273C; font-size:clamp(24px,2.6vw,30px); letter-spacing:-0.01em; margin-bottom:14px;">Notre actualité</div>
     <div class="rx-card">
     <div class="rx-head">
