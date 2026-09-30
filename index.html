@@ -944,8 +944,19 @@
       <h2>Vacciner, prévenir, accompagner</h2>
       <p>Au-delà de la délivrance, notre équipe consacre un temps dédié au suivi vaccinal, aux bilans de prévention et à l'accompagnement personnalisé sur des sujets sensibles comme l'allaitement ou l'arrêt du tabac.</p>
     </div>
+    <style>
+      @keyframes pointerBounce{0%,100%{transform:translateX(-50%) translateY(0);} 50%{transform:translateX(-50%) translateY(12px);}}
+      @keyframes pointerBlink{0%,100%{opacity:1;} 50%{opacity:0.2;}}
+      .pointer-arrow{
+        position:absolute; top:-58px; left:50%;
+        animation: pointerBounce 0.9s ease-in-out infinite, pointerBlink 0.9s ease-in-out infinite;
+        z-index:6; pointer-events:none;
+      }
+      @media(max-width:880px){ .pointer-arrow{display:none;} }
+    </style>
     <div class="priority-grid">
-      <a href="vaccination.html" class="priority-card p-pine" style="text-decoration:none; color:inherit;">
+      <a href="vaccination.html" class="priority-card p-pine" style="text-decoration:none; color:inherit; position:relative;">
+        <div class="pointer-arrow"><svg width="56" height="56" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 1v17M12 18l-6-6M12 18l6-6" stroke="#D6273C" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
         <div class="p-icon"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 6l-3-3-9 9-2 5 5-2 9-9z" stroke="var(--ivory)" stroke-width="1.8" stroke-linejoin="round"/><path d="M14 6l4 4" stroke="var(--ivory)" stroke-width="1.8"/><path d="M6 16l2 2" stroke="var(--sun)" stroke-width="1.8" stroke-linecap="round"/></svg></div>
         <h3>Vaccination</h3>
         <p>Grippe, Covid, calendrier vaccinal complet : réalisée sur place par nos pharmaciens, sans ordonnance dans la majorité des cas.</p>
