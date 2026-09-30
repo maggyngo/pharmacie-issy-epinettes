@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/conseils-grippe.html",
+      "destination": "/conseils-vaccination-grippe.html",
+      "permanent": true
+    }
+  ]
+}
