@@ -4,6 +4,11 @@
       "source": "/conseils-grippe.html",
       "destination": "/conseils-vaccination-grippe.html",
       "permanent": true
+    },
+    {
+      "source": "/trousse-voyage-ete.html",
+      "destination": "/conseils-trousse-vacances.html",
+      "permanent": true
     }
   ]
 }

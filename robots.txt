@@ -1,6 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /index.pdf
-Disallow: /conseils-vaccination-zona.pdf
 
 Sitemap: https://pharmacie-issy-epinettes.fr/sitemap.xml
