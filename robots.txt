@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://pharmacie-issy-epinettes.fr/sitemap.xml
+Sitemap: https://www.pharmacie-issy-epinettes.fr/sitemap.xml
